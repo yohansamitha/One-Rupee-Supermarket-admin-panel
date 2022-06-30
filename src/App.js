@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useRoutes} from "react-router";
+import routes from "./routes";
+import {ThemeProvider} from "@material-ui/core";
+import GlobalStyles from "./components/GlobalStyles";
+import theme from "./theme";
+import React from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const routing = useRoutes(routes(getAuthState()));
+    return (
+        <ThemeProvider theme={theme}>
+            <GlobalStyles/>
+            {routing}
+        </ThemeProvider>
+    );
 }
 
 export default App;
+
+function getAuthState() {
+    // return {authStatus:true, userType:"CASHIER"};
+    return {authStatus: true, userType: "ADMIN"};
+}
