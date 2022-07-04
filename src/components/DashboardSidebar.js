@@ -4,16 +4,19 @@ import PropTypes from "prop-types";
 import {Avatar, Box, Divider, Drawer, Hidden, List, Typography,} from "@material-ui/core";
 import {
     BarChart as BarChartIcon,
+    BarChart2 as Barchart2Icon,
+    PieChart,
     ShoppingBag as ShoppingBagIcon,
+    ShoppingCart,
     User as UserIcon,
-    Users as UsersIcon,
+    Users as UsersIcon
 } from "react-feather";
 import NavItem from "./NavItem";
 
 const user = {
     avatar: "/static/images/avatars/avatar_6.png",
-    jobTitle: "Super Admin",
-    name: "Siripala Perera",
+    jobTitle: sessionStorage.getItem('userType'),
+    name: sessionStorage.getItem('fullName'),
 };
 
 const adminNavItems = [
@@ -23,73 +26,53 @@ const adminNavItems = [
         title: "Dashboard",
     },
     {
-        href: "/app/customers",
+        href: "/admin/cashier/management",
+        icon: UserIcon,
+        title: "Cashier Account Management",
+    },
+    {
+        href: "/admin/customer/management",
         icon: UsersIcon,
-        title: "Customers",
+        title: "Customers Account Management",
     },
     {
-        href: "/app/products",
+        href: "/admin/products/management",
         icon: ShoppingBagIcon,
-        title: "Products",
+        title: "Products Management",
     },
     {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
+        href: "/admin/reports",
+        icon: Barchart2Icon,
+        title: "Reports",
     },
     {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
+        href: "/admin/prediction/reports",
+        icon: PieChart,
+        title: "Sales Prediction",
     },
 ];
 
 const cashierNavItems = [
     {
-        href: "/admin/dashboard",
+        href: "/cashier/dashboard",
         icon: BarChartIcon,
-        title: "admin",
+        title: "Dashboard",
     },
     {
-        href: "/app/customers",
+        href: "/cashier/order",
+        icon: ShoppingCart,
+        title: "Orders",
+    },
+    {
+        href: "/cashier/customer/management",
         icon: UsersIcon,
-        title: "Customers",
+        title: "Customers Account Management",
     },
     {
-        href: "/app/products",
+        href: "/cashier/products",
         icon: ShoppingBagIcon,
-        title: "Products",
+        title: "Products List",
     },
-    {
-        href: "/app/account",
-        icon: UserIcon,
-        title: "Account",
-    }
 ];
 
 const DashboardSidebar = ({userType, onMobileClose, openMobile}) => {

@@ -9,7 +9,8 @@ import NotFound from "./pages/NotFound";
 const routes = ({authStatus, userType}) => [
     {
         path: "/admin",
-        element: authStatus && userType === "ADMIN" ? <DashboardLayout userType={userType}/> : <Navigate to="/login"/>,
+        element: authStatus && userType === "ADMIN" ? <DashboardLayout userType={userType}/> :
+            <Navigate to="/login"/>,
         children: [
             {path: "", element: <Navigate to="/admin/dashboard"/>},
             {path: "dashboard", element: <Dashboard/>},
@@ -19,9 +20,11 @@ const routes = ({authStatus, userType}) => [
             {path: "customer/management", element: <Dashboard/>},
             {path: "customer/management/new", element: <Dashboard/>},
             {path: "customer/management/:id/edit", element: <Dashboard/>},
-            {path: "item/management", element: <Dashboard/>},
-            {path: "item/management/new", element: <Dashboard/>},
-            {path: "item/management/:id/edit", element: <Dashboard/>},
+            {path: "products/management", element: <Dashboard/>},  //need to pass user type for customer
+            {path: "products/management/new", element: <Dashboard/>},
+            {path: "products/management/:id/edit", element: <Dashboard/>},
+            {path: "reports", element: <Dashboard/>},
+            {path: "prediction/reports", element: <Dashboard/>},
         ],
     },
     {
@@ -37,7 +40,7 @@ const routes = ({authStatus, userType}) => [
             {path: "order", element: <Dashboard/>},
             {path: "order/new", element: <Dashboard/>},
             {path: "order/:id/edit", element: <Dashboard/>},
-
+            {path: "products/management", element: <Dashboard/>},  //need to pass user type for customer
         ],
     },
     {

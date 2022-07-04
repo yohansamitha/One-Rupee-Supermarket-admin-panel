@@ -18,6 +18,7 @@ function App() {
 export default App;
 
 function getAuthState() {
-    // return {authStatus:true, userType:"CASHIER"};
-    return {authStatus: true, userType: "ADMIN"};
+    let authStatus = sessionStorage.getItem('authStatus')
+    let userType = sessionStorage.getItem('userType')
+    return {authStatus: authStatus === 'true', userType: userType};
 }
